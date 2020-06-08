@@ -10,7 +10,7 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
         'rekognition',
         # Hard coded strings as credentials, not recommended.
         aws_access_key_id="[]",
-        aws_secret_access_key="[]S",
+        aws_secret_access_key="[]",
         aws_session_token="[]"
         )
     try:
