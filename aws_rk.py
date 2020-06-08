@@ -70,7 +70,7 @@ def main():
     logs.write(f"control statement: {statement_detected}\n\t|average_confidence: {average_confidence}% \n")
 
     logs.write(f"---------------------------------------------------------------------------------------------------------------------\n")
-    images = ['test.png', 'test2.jpg', 'test3.jpg', 'test4.jpg', 'test5.jpg', 'test6.jpg', 'test7.jpg', 'test8.png', 'test9.jpg', 'test10.jpg', 'test11.jpg', 'test12.jpg', 'test13.jpg', 'test15.png', 'test16.jpg']
+    images = ['test.png', 'test2.jpg', 'test3.jpg', 'test4.jpg', 'test5.jpg', 'test6.jpg', 'test7.jpg', 'test8.png', 'test9.jpg', 'test10.jpg', 'test11.jpg', 'test12.jpg', 'test13.jpg', 'test15.png', 'test16.png']
     for image in images:
         logs.write(f"Test image: {image}:\n")
 
