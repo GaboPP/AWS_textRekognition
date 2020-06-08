@@ -9,11 +9,9 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     client = boto3.client(
         'rekognition',
         # Hard coded strings as credentials, not recommended.
-        # aws_access_key_id='AKIAR7SW3EXNWLW5OL4E',
-        # aws_secret_access_key='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'
-        aws_access_key_id="ASIA5RFWPKBSPCWZWDGR",
-        aws_secret_access_key="tK08/CJ0+aPYBzG5Mu3oprxo87QiAVRapXp0gnLS",
-        aws_session_token="FwoGZXIvYXdzEJn//////////wEaDIynaMkWz507p9DDviLNAbugsrZCyeK37OgVcogeTGGgOhggYVzHMhfjZaI0YuIUKJHbGRWn4HFG3DxoUZZL2hGMCVqRc4G6xTxVDDvoWbK+lkqXTINmmmmbv/VlAPEC4LW2x3fyn4rd+VYMOT0Rew9jxsGiyGGww0qJiJg5RRzxkRYWYdzizu6PC3OEz+F+5c4pdnw3LNSMTLK5H8v+kBVLA1XBF8L2Fzd78Q52PwfttOX+lC1B1qElVwxx4jLAJi7Kf7FLOY6CQ8RISOI3mdzKfiBIsiaNcaj1Ju0oi7359gUyLY6UK4H8REA9ZoSRC/zSmgbTBI3dPFczhNGypl5xzw+9TmqGI4+G3tiakpmODA=="
+        aws_access_key_id="[]",
+        aws_secret_access_key="[]S",
+        aws_session_token="[]"
         )
     try:
         response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':image}})
