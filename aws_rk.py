@@ -9,9 +9,9 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     client = boto3.client(
         'rekognition',
         # Hard coded strings as credentials, not recommended.
-        aws_access_key_id="[]",
-        aws_secret_access_key="[]",
-        aws_session_token="[]"
+        aws_access_key_id="ASIA5RFWPKBSNNRPDI34",
+        aws_secret_access_key="ls0djvGW9xO+M2maPyrqAXp9WMCrukrEgXEjDFGd",
+        aws_session_token="FwoGZXIvYXdzEKH//////////wEaDL5MoNMtewheOeGj2yLNAbybAIPhdOau9RewA3Jcd7CR9cQNpzjkyyPug1d2hS6rUTIstHpUXUi2HiYkxx/xzDuPtF1POQTpR1OrAXeIRjtB58AzrKNJpAvBAzI3cHcJCTocYmQ1u/hdhNOB/fa94F+u2GlppEPvotXljcpQhnkJyLPYk+YlfdvnXDkoVnyFnW1Q9TbQiIjGvLc7lkSvrBf2Jbwnuhw9GDtoVtbCqefCZoPh4Ltl5jP4fcTosRjvZq/kw25E7J0pk5UEyjgbjISflKLGNGhr+yftpCworZn79gUyLQUney3eaHCO9cBNwvYj3fE0m4HNJPukG1rJzE632O5DfrqltQZ1+7Aw2f6PCA=="
         )
     try:
         response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':image}})
@@ -28,7 +28,7 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
 
     rw_log.write(f"file: {image}\n---------------\n")
     for text in textDetections:
-        # print ('Detected text:' + Detected_text)
+        # print ('Detected text:' + text['DetectedText'])
         # print ('Confidence: ' + "{:.2f}".format(text['Confidence']) + "%")
         # print ('Id: {}'.format(text['Id']))
         # if 'ParentId' in text:
@@ -52,7 +52,7 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
 
     rw_log.write(f"-------------------------------------------------\n")
     rw_log.close()
-    average_confidence = round(average_confidence/words)
+    average_confidence = round(average_confidence/words) if words != 0 else 0
     statement_detected = ''.join(statement_detected.lower()[:-1].split(' '))
     
     return statement_detected, average_confidence, original_statement
@@ -67,16 +67,17 @@ def main():
     logs.write(f"time log: {time_test} \n")
 
     statement_detected, average_confidence, original_statement = detect_text()
-    logs.write(f"control statement: {statement_detected}\n\t|average_confidence: {average_confidence}% \n")
+    logs.write(f"control statement: {original_statement}\n\t|average_confidence: {average_confidence}% \n")
 
     logs.write(f"---------------------------------------------------------------------------------------------------------------------\n")
-    images = ['test.png', 'test2.jpg', 'test3.jpg', 'test4.jpg', 'test5.jpg', 'test6.jpg', 'test7.jpg', 'test8.png', 'test9.jpg', 'test10.jpg', 'test11.jpg', 'test12.jpg', 'test13.jpg', 'test15.png', 'test16.png']
+    images = ['test.png', 'test2.jpg', 'test3.jpg', 'test4.jpg', 'test5.jpg', 'test6.jpg', 'test7.jpg', 'test8.png', 'test9.jpg', 'test10.jpg', 'test11.jpg', 'test12.jpg', 'test13.jpg', 'test14.png', 'test15.png']
+    # images = ['test12.jpg']
     for image in images:
         logs.write(f"Test image: {image}:\n")
 
         statement_detected2, average_confidence2, original_statement2 = detect_text(image=image, statement=statement_detected)
 
-        logs.write(f"\t|Test statement: {statement_detected2}\n\t\t|average_confidence: {average_confidence2}% \n")
+        logs.write(f"\t|Test statement: {original_statement2}\n\t\t|average_confidence: {average_confidence2}% \n")
         print(f"Texto de imagen de control {'SI' if statement_detected in statement_detected2 else 'NO'} está completamente presente en el texto de imagen de prueba.")
         logs.write(f"\t|found text: {statement_detected in statement_detected2}.\n")
         logs.write(f"---------------------------------------------------------------------------------------------------------------------\n")
