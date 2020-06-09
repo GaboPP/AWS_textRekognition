@@ -9,9 +9,9 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     client = boto3.client(
         'rekognition',
         # Hard coded strings as credentials, not recommended.
-        aws_access_key_id="ASIA5RFWPKBSARFB5UVS",
-        aws_secret_access_key="OE2YszilNPBXhYVPKpEMkpB85W8mXNxkRBCMMiPn",
-        aws_session_token="FwoGZXIvYXdzELT//////////wEaDLtBnJ/qpeBn93HUTSLNAU3rPmPWjVU8wJnSwryhIGQ+lgGKOHMbzYcQZ7V7edeq7ECtc/xB8HMDlsKgHgPtrfHQXHyD0w0qhVr/vY52YQ33Xuqwc3nPmI6CRVtYqZwWsln3+O+U/1V7l/5QPI9d+/nlQjBjat7aPL8gwLGMqLpgoRRE2MuDIT9GNxJQztwrklvipnEMNGqeYlilrS/TyeRQenvEkgYKvGV8d8JqpaKJ/ru74Pq0wqjKcU70fJf1IQyy/mas9aUztSzf7jGwnPouezujZONvepypp40osK7/9gUyLdFWvfw5jaYbulW2RW3d1xeKrScw1uFQeH9lVSjNpWGeutAY0sroDATF9h+btg=="
+        aws_access_key_id="",
+        aws_secret_access_key="",
+        aws_session_token=""
         )
     try:
         response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':image}})
@@ -24,24 +24,14 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     average_confidence = 0
     statement_detected = ''
     original_statement = ''
-    # print ('Detected text\n----------')
 
     rw_log.write(f"file: {image}\n---------------\n")
     for text in textDetections:
-        # print ('Detected text:' + text['DetectedText'])
-        # print ('Confidence: ' + "{:.2f}".format(text['Confidence']) + "%")
-        # print ('Id: {}'.format(text['Id']))
-        # if 'ParentId' in text:
-        #     print ('Parent Id: {}'.format(text['ParentId']))
-        # print ('Type:' + text['Type'])
-        # print()
         if  (text['Type'] == "WORD"):
              continue
         Detected_text = text['DetectedText'].lower().strip()
         Detected_text = re.sub('\W+','', Detected_text )
-        # print(''.join(statement.split(' ')))
-        # print(Detected_text)
-
+        
         if (text['Confidence']>97 or Detected_text in statement):
             statement_detected += f"{Detected_text} "
             original_statement += f"{text['DetectedText']} "
