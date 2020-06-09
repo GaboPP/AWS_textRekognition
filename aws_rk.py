@@ -9,6 +9,9 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     client = boto3.client(
         'rekognition',
         # Hard coded strings as credentials, not recommended.
+        aws_access_key_id="ASIA5RFWPKBSARFB5UVS",
+        aws_secret_access_key="OE2YszilNPBXhYVPKpEMkpB85W8mXNxkRBCMMiPn",
+        aws_session_token="FwoGZXIvYXdzELT//////////wEaDLtBnJ/qpeBn93HUTSLNAU3rPmPWjVU8wJnSwryhIGQ+lgGKOHMbzYcQZ7V7edeq7ECtc/xB8HMDlsKgHgPtrfHQXHyD0w0qhVr/vY52YQ33Xuqwc3nPmI6CRVtYqZwWsln3+O+U/1V7l/5QPI9d+/nlQjBjat7aPL8gwLGMqLpgoRRE2MuDIT9GNxJQztwrklvipnEMNGqeYlilrS/TyeRQenvEkgYKvGV8d8JqpaKJ/ru74Pq0wqjKcU70fJf1IQyy/mas9aUztSzf7jGwnPouezujZONvepypp40osK7/9gUyLdFWvfw5jaYbulW2RW3d1xeKrScw1uFQeH9lVSjNpWGeutAY0sroDATF9h+btg=="
         )
     try:
         response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':image}})
@@ -51,7 +54,7 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     rw_log.close()
     average_confidence = round(average_confidence/words) if words != 0 else 0
     statement_detected = ''.join(statement_detected.lower()[:-1].split(' '))
-    
+    statement_detected = statement_detected if statement_detected != '' else 'null'
     return statement_detected, average_confidence, original_statement
 
 def main():
@@ -68,15 +71,15 @@ def main():
 
     logs.write(f"---------------------------------------------------------------------------------------------------------------------\n")
     images = ['test.png', 'test2.jpg', 'test3.jpg', 'test4.jpg', 'test5.jpg', 'test6.jpg', 'test7.jpg', 'test8.png', 'test9.jpg', 'test10.jpg', 'test11.jpg', 'test12.jpg', 'test13.jpg', 'test14.png', 'test15.png']
-    # images = ['test12.jpg']
+    # images = ['test9.jpg']
     for image in images:
         logs.write(f"Test image: {image}:\n")
 
         statement_detected2, average_confidence2, original_statement2 = detect_text(image=image, statement=statement_detected)
 
         logs.write(f"\t|Test statement: {original_statement2}\n\t\t|average_confidence: {average_confidence2}% \n")
-        print(f"Texto de imagen de control {'SI' if statement_detected in statement_detected2 else 'NO'} está completamente presente en el texto de imagen de prueba.")
-        logs.write(f"\t|found text: {statement_detected in statement_detected2}.\n")
+        print(f"Texto de imagen de prueba {'SI' if statement_detected2 in statement_detected else 'NO'} está completamente presente en el texto de imagen de control.")
+        logs.write(f"\t|found text: {statement_detected2 in statement_detected}.\n")
         logs.write(f"---------------------------------------------------------------------------------------------------------------------\n")
 
     logs.close()

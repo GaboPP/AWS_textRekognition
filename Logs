@@ -1,4 +1,4 @@
-time log: 09/Jun/2020 00:07:27 
+time log: 09/Jun/2020 20:22:40 
 control statement: IT'S MONDAY but keep Smiling 
 	|average_confidence: 100% 
 ---------------------------------------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ Test image: test.png:
 Test image: test2.jpg:
 	|Test statement: it's MONDAY but KEEP 
 		|average_confidence: 99% 
-	|found text: False.
+	|found text: True.
 ---------------------------------------------------------------------------------------------------------------------
 Test image: test3.jpg:
 	|Test statement: It's Monday but keep SMILING 
@@ -25,7 +25,7 @@ Test image: test4.jpg:
 Test image: test5.jpg:
 	|Test statement: IT'S MONDAY BUT KEEP SMILING! k64141582 fotosearch.com 
 		|average_confidence: 98% 
-	|found text: True.
+	|found text: False.
 ---------------------------------------------------------------------------------------------------------------------
 Test image: test6.jpg:
 	|Test statement: Happy Monday! Wishing you a wonderful week! 
@@ -43,8 +43,8 @@ Test image: test8.png:
 	|found text: True.
 ---------------------------------------------------------------------------------------------------------------------
 Test image: test9.jpg:
-	|Test statement: but 
-		|average_confidence: 100% 
+	|Test statement: 
+		|average_confidence: 0% 
 	|found text: False.
 ---------------------------------------------------------------------------------------------------------------------
 Test image: test10.jpg:
