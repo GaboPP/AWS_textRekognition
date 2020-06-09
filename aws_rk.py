@@ -9,9 +9,6 @@ def detect_text(image='control.png', bucket='aiimageseducate', statement=''):
     client = boto3.client(
         'rekognition',
         # Hard coded strings as credentials, not recommended.
-        aws_access_key_id="ASIA5RFWPKBSNNRPDI34",
-        aws_secret_access_key="ls0djvGW9xO+M2maPyrqAXp9WMCrukrEgXEjDFGd",
-        aws_session_token="FwoGZXIvYXdzEKH//////////wEaDL5MoNMtewheOeGj2yLNAbybAIPhdOau9RewA3Jcd7CR9cQNpzjkyyPug1d2hS6rUTIstHpUXUi2HiYkxx/xzDuPtF1POQTpR1OrAXeIRjtB58AzrKNJpAvBAzI3cHcJCTocYmQ1u/hdhNOB/fa94F+u2GlppEPvotXljcpQhnkJyLPYk+YlfdvnXDkoVnyFnW1Q9TbQiIjGvLc7lkSvrBf2Jbwnuhw9GDtoVtbCqefCZoPh4Ltl5jP4fcTosRjvZq/kw25E7J0pk5UEyjgbjISflKLGNGhr+yftpCworZn79gUyLQUney3eaHCO9cBNwvYj3fE0m4HNJPukG1rJzE632O5DfrqltQZ1+7Aw2f6PCA=="
         )
     try:
         response=client.detect_text(Image={'S3Object':{'Bucket':bucket,'Name':image}})

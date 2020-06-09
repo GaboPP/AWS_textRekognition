@@ -1,0 +1,79 @@
+time log: 09/Jun/2020 00:07:27 
+control statement: IT'S MONDAY but keep Smiling 
+	|average_confidence: 100% 
+---------------------------------------------------------------------------------------------------------------------
+Test image: test.png:
+	|Test statement: It's Monday But Keep Smiling 
+		|average_confidence: 100% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test2.jpg:
+	|Test statement: it's MONDAY but KEEP 
+		|average_confidence: 99% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test3.jpg:
+	|Test statement: It's Monday but keep SMILING 
+		|average_confidence: 99% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test4.jpg:
+	|Test statement: IT'S MONDAY But KEEP SMILING 
+		|average_confidence: 97% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test5.jpg:
+	|Test statement: IT'S MONDAY BUT KEEP SMILING! k64141582 fotosearch.com 
+		|average_confidence: 98% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test6.jpg:
+	|Test statement: Happy Monday! Wishing you a wonderful week! 
+		|average_confidence: 100% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test7.jpg:
+	|Test statement: It's MONDAY, but keep SMILING! 
+		|average_confidence: 98% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test8.png:
+	|Test statement: ITS MONDAY, BUT KEEP SMILING 
+		|average_confidence: 100% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test9.jpg:
+	|Test statement: but 
+		|average_confidence: 100% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test10.jpg:
+	|Test statement: It's Monday But Keep Smiling 
+		|average_confidence: 99% 
+	|found text: True.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test11.jpg:
+	|Test statement: 
+		|average_confidence: 0% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test12.jpg:
+	|Test statement: Keep miling 
+		|average_confidence: 100% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test13.jpg:
+	|Test statement: est, qui dolorem Neque porro quisquam est, qui dolorem Neque porro quisq consectetur, adipisci ipsum quia dolor sit amet, consectetur, adipisci ipsum quia dolor sit uam eius modi tempora velit, sed quia non numquam eius modi tempora velit, sed quia non numg olore magnam aliquam incidunt ut labore et dolore 
+		|average_confidence: 99% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test14.png:
+	|Test statement: HAPPY FRIDAY!! Keep Smiling Its a HOLIDAY MONDAY!! 
+		|average_confidence: 100% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
+Test image: test15.png:
+	|Test statement: Esta oracion intenta tener mas que el maximo permitdo, con 50 y esta oracion viene inmediatamente la oracion correcta de la imagen de control, oracion que esta en ingles, esta oracion viene justamente ahora en. cinco cuatro tres dos uno cero llego el momento. 
+		|average_confidence: 96% 
+	|found text: False.
+---------------------------------------------------------------------------------------------------------------------
